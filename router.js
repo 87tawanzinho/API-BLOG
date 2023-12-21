@@ -9,7 +9,8 @@ rotas.get("/", async (req, res) => {
 
 rotas.get("/:title", async (req, res) => {
   const { title } = req.params;
-  const getBlog = await Blog.findOne(title);
+  const regex = new RegExp(title, "i");
+  const getBlog = await Blog.findOne({ title: { $regex: regex } });
   return res.json(getBlog).status(200);
 });
 
