@@ -7,9 +7,9 @@ rotas.get("/", async (req, res) => {
   return res.json(getAll).status(200);
 });
 
-rotas.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  const getBlog = await Blog.findById(id);
+rotas.get("/:title", async (req, res) => {
+  const { title } = req.params;
+  const getBlog = await Blog.findOne(title);
   return res.json(getBlog).status(200);
 });
 
